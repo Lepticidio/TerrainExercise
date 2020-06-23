@@ -2,6 +2,7 @@
 #define __CHARACTER_H__
 
 #include <moaicore/MOAIEntity2D.h>
+#include "Navmesh.h"
 
 class Character: public MOAIEntity2D
 {
@@ -25,6 +26,7 @@ public:
 private:
 	USVec2D mLinearVelocity;
 	float mAngularVelocity;
+	Navmesh* m_pNavmesh;
 	
 	
 	

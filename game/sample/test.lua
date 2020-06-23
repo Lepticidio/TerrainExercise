@@ -1,8 +1,8 @@
-MOAISim.openWindow("game", 1024, 768)
+MOAISim.openWindow("game", 1280, 1024)
 
 viewport = MOAIViewport.new()
-viewport:setSize (1024, 768)
-viewport:setScale (1024, -768)
+viewport:setSize (1280, 1024)
+viewport:setScale (1920, -1536)
 
 layer = MOAILayer2D.new()
 layer:setViewport(viewport)
@@ -19,14 +19,14 @@ function drawBackground(image, sizeX, sizeY)
     layer:insertProp(prop)
 end
 
-drawBackground("background.png", 1024, 768)
+drawBackground("background.png", 1920, 1536)
 
 texture_name = "ghost32.png"
 gfxQuad = MOAIGfxQuad2D.new()
 gfxQuad:setTexture(texture_name)
 gfxQuad:setRect(-16, -16, 16, 16)
 gfxQuad:setUVRect(0, 0, 1, 1)
-  
+
 prop = MOAIProp2D.new()
 prop:setDeck(gfxQuad)
 

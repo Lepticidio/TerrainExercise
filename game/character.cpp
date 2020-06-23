@@ -6,6 +6,8 @@ Character::Character() : mLinearVelocity(0.0f, 0.0f), mAngularVelocity(0.0f)
 	RTTI_BEGIN
 		RTTI_EXTEND (MOAIEntity2D)
 	RTTI_END
+	const char* sNavmeshName = "navmesh.xml";
+	m_pNavmesh = new Navmesh(sNavmeshName);
 }
 
 Character::~Character()
@@ -30,8 +32,8 @@ void Character::OnUpdate(float step)
 void Character::DrawDebug()
 {
 	MOAIGfxDevice& gfxDevice = MOAIGfxDevice::Get();
-	gfxDevice.SetPenColor(0.0f, 0.0f, 1.0f, 0.5f);
-
+	gfxDevice.SetPenColor(1.0f, 1.0f, 1.0f, 0.5f);
+	m_pNavmesh->DrawDebug();
 	//MOAIDraw::DrawPoint(0.0f, 0.0f);
 }
 
