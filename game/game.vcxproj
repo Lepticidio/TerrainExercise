@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="Edge.cpp" />
     <ClCompile Include="gameConfig.cpp" />
     <ClCompile Include="host\FolderWatcher-win.cpp" />
     <ClCompile Include="host\GlutHost.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
+    <ClInclude Include="Edge.h" />
     <ClInclude Include="gameConfig.h" />
     <ClInclude Include="host\FolderWatcher-win.h" />
     <ClInclude Include="host\GlutHost.h" />

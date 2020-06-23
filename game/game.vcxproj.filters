@@ -21,6 +21,7 @@
     </ClCompile>
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Navmesh.cpp" />
+    <ClCompile Include="Edge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -40,6 +41,7 @@
     </ClInclude>
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Navmesh.h" />
+    <ClInclude Include="Edge.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="host">

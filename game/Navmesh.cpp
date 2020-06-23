@@ -59,6 +59,57 @@ Navmesh::Navmesh(const char* filename)
             xPolygon = xPolygonNode->ToElement();
         }
     }
+    TiXmlNode* xPolygonsNode = hPolygons.ToNode();
+    TiXmlNode* xLinksNode = xPolygonsNode->NextSibling();
+
+
+    TiXmlElement* xLink = xLinksNode->FirstChildElement()->ToElement();
+    while (xLink)
+    {
+        TiXmlElement* xEdge = xLink->FirstChildElement("start")->ToElement();
+        Polygon* pPreviousPolygon = nullptr;
+        Edge* pPreviousEdge = nullptr;
+        while (xEdge)
+        {
+            Edge* pEdge = new Edge();
+            int iPolygonIndex;
+            xEdge->Attribute("polygon", &iPolygonIndex);
+            xEdge->Attribute("edgestart", &pEdge->m_verts[0]);
+            xEdge->Attribute("edgeend", &pEdge->m_verts[1]);
+            Polygon* pPolygon = &m_tPolygons[iPolygonIndex];
+            pPolygon->m_tEdge.push_back(pEdge);
+            if (pPreviousPolygon != nullptr && pPreviousEdge != nullptr)
+            {
+                pEdge->m_pNeighbour = pPreviousPolygon;
+                pPreviousEdge->m_pNeighbour = pPolygon;
+
+            }
+            printf("something");
+            pPreviousEdge = pEdge;
+            pPreviousPolygon = pPolygon;
+
+            TiXmlNode* xEdgeNode = xEdge->NextSibling();;
+            if (xEdgeNode == nullptr)
+            {
+                xEdge = nullptr;
+            }
+            else
+            {
+                xEdge = xEdgeNode->ToElement();
+            }
+
+        }
+
+        TiXmlNode* xLinkNode = xLink->NextSibling();;
+        if (xLinkNode == nullptr)
+        {
+            xLink = nullptr;
+        }
+        else
+        {
+            xLink = xLinkNode->ToElement();
+        }
+    }
 }
 void Navmesh::DrawDebug()
 {
